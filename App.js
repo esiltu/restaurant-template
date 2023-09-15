@@ -1,7 +1,11 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { OnboardingFlow } from "./src/routers/router";
+import {
+  OnboardingFlow,
+  LoginScreen,
+  RegisterScreen,
+} from "./src/routers/router";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +16,16 @@ export default function App() {
         <Stack.Screen
           name="Onboarding"
           component={OnboardingFlow}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
