@@ -47,7 +47,7 @@ const doneButtonComponent = ({ ...props }) => {
 
 const skipButtonComponent = ({ ...props }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...props}>
       <Text style={{ fontSize: 20, left: "15%", color: "#4B5563" }}>Skip</Text>
     </TouchableOpacity>
   );
@@ -59,9 +59,9 @@ const OnboardingFlow = () => {
   return (
     <Onboarding
       bottomBarHighlight={false}
-      // SkipButtonComponent={() => navigation.navigate("LoginScreen")}
-      onSkip={() => navigation.navigate("LoginScreen")}
-      onDone={() => navigation.navigate("LoginScreen")}
+      // SkipButtonComponent={() => navigation.navigate("HomeScreen")}
+      onSkip={() => navigation.navigate("HomeScreen")}
+      onDone={() => navigation.navigate("HomeScreen")}
       DoneButtonComponent={doneButtonComponent}
       NextButtonComponent={nextButtonComponent}
       SkipButtonComponent={skipButtonComponent}

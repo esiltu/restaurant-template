@@ -3,9 +3,11 @@ import React from "react";
 
 const RegisterScreen = () => {
   return (
-    <View>
-      <Text>RegisterScreen</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>LoginScreen</Text>
+      </View>
+    </SafeAreaView>
   );
 };
 
