@@ -4,6 +4,7 @@ import { StyleSheet } from "react-native";
 const HomeStyle = StyleSheet.create({
   containerHome: {
     flex: 1,
+    backgroundColor: "#FFFFFF",
   },
   containerViewImage: { top: "15%" },
   containerImageStyle: {

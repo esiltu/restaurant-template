@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Image, View, TouchableOpacity, Text } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import {
   OnboardingImageOne,
   OnboardingImageTwo,
   OnboardingImageThree,
+  OnboardingAnimationOne,
 } from "../assets/images/onboardingandOther/router";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import LottieView from "lottie-react-native";
 
 const Dots = ({ selected }) => {
   let backgroundColor;
@@ -56,6 +58,7 @@ const skipButtonComponent = ({ ...props }) => {
 const OnboardingFlow = () => {
   // Finish button
   const navigation = useNavigation();
+  const animation = useRef(null);
   return (
     <Onboarding
       bottomBarHighlight={false}
@@ -66,14 +69,21 @@ const OnboardingFlow = () => {
       NextButtonComponent={nextButtonComponent}
       SkipButtonComponent={skipButtonComponent}
       DotComponent={Dots}
+      containerStyles={{ paddingHorizontal: 15 }}
       pages={[
         {
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "#fff",
           image: (
-            <Image
-              source={OnboardingImageOne}
-              style={{ width: "70%", height: "45%", top: "20%" }}
-            />
+            <View>
+              <LottieView
+                source={require("../assets/images/onboardingandOther/animation.json")}
+                autoPlay
+                loop
+                ref={animation}
+                style={{ width: 300, height: 300 }}
+                speed={0.5}
+              />
+            </View>
           ),
           titleStyles: { bottom: "150%", fontWeight: "600", fontSize: 24 },
           subTitleStyles: { bottom: "100%" },
@@ -84,13 +94,19 @@ const OnboardingFlow = () => {
         {
           backgroundColor: "#FFFFFF",
           image: (
-            <Image
-              source={OnboardingImageTwo}
-              style={{ width: "70%", height: "60%", top: "20%" }}
-            />
+            <View>
+              <LottieView
+                source={require("../assets/images/onboardingandOther/animationsecond.json")}
+                autoPlay
+                loop
+                ref={animation}
+                style={{ width: 250, height: 250 }}
+                speed={0.5}
+              />
+            </View>
           ),
-          titleStyles: { bottom: "300%", fontWeight: "600", fontSize: 24 },
-          subTitleStyles: { bottom: "320%" },
+          titleStyles: { bottom: "100%", fontWeight: "600", fontSize: 24 },
+          subTitleStyles: { bottom: "100%" },
           title: "Select the Favorites Menu",
           subtitle:
             "Now eat well, don't leave the house,You can choose your favorite food only with one click",
@@ -98,13 +114,19 @@ const OnboardingFlow = () => {
         {
           backgroundColor: "#FFFFFF",
           image: (
-            <Image
-              source={OnboardingImageThree}
-              style={{ width: "75%", height: "60%", top: "20%" }}
-            />
+            <View>
+              <LottieView
+                source={require("../assets/images/onboardingandOther/animationthird.json")}
+                autoPlay
+                loop
+                ref={animation}
+                style={{ width: 250, height: 250 }}
+                speed={0.5}
+              />
+            </View>
           ),
-          titleStyles: { bottom: "300%", fontWeight: "600", fontSize: 24 },
-          subTitleStyles: { bottom: "320%" },
+          titleStyles: { bottom: "160%", fontWeight: "600", fontSize: 24 },
+          subTitleStyles: { bottom: "180%" },
           title: "Good food at a cheap price",
           subtitle:
             "You can eat at a expensive restaurants with affordable price",

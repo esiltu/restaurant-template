@@ -18,14 +18,14 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
-          options={{ headerShown: false, gestureEnabled: false }}
+          options={{ headerShown: false, gestureEnabled: true }}
         />
         <Stack.Screen
           name="AuthScreen"
           component={AuthScreen}
           options={{
             headerShown: false,
-            gestureEnabled: false,
+            gestureEnabled: true,
             presentation: "transparentModal",
           }}
         />
