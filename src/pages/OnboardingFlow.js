@@ -5,7 +5,7 @@ import {
   OnboardingImageOne,
   OnboardingImageTwo,
   OnboardingImageThree,
-} from "../assets/images/onboarding/router";
+} from "../assets/images/onboardingandOther/router";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 

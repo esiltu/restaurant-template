@@ -1,6 +1,6 @@
 # Git instructions
 
-git add . && git commit -m "$(date)" && git push
+git add . && git commit -m "$(date) + HomeScreen almost done..." && git push
 
 # React Navigation instructions
 
