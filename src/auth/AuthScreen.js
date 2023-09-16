@@ -2,35 +2,72 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import Swiper from "react-native-swiper";
+import AuthStyle from "../styles/AuthStyle";
+import { Ionicons } from "@expo/vector-icons";
 
 const AuthScreen = () => {
   const [activePageIndex, setActivePageIndex] = useState(0);
+  const [createAccountData, setCreateAccountData] = useState({
+    fullName: "", 
+    email: "",
+    password: "",
+  });
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const isRegistrationButtonActive =
+    createAccountData.fullName !== "" &&
+    createAccountData.email !== "" &&
+    createAccountData.password !== "";
+
+  const isLoginButtonActive =
+    loginData.email !== "" && loginData.password !== "";
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.tabBar}>
+    <SafeAreaView style={AuthStyle.container}>
+      <View style={AuthStyle.tabBar}>
         <TouchableOpacity
           onPress={() => setActivePageIndex(0)}
           style={[
-            styles.tabItem,
-            activePageIndex === 0 && styles.activeTabItem,
+            AuthStyle.tabItem,
+            activePageIndex === 0 && AuthStyle.activeTabItem,
           ]}
         >
-          <Text style={styles.tabText}>Create Account</Text>
+          <Text
+            style={[
+              AuthStyle.tabText,
+              activePageIndex === 0 && AuthStyle.activeTabText,
+            ]}
+          >
+            Create Account
+          </Text>
+          {activePageIndex === 0 && <View style={AuthStyle.underline} />}
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => setActivePageIndex(1)}
           style={[
-            styles.tabItem,
-            activePageIndex === 1 && styles.activeTabItem,
+            AuthStyle.tabItem,
+            activePageIndex === 1 && AuthStyle.activeTabItem,
           ]}
         >
-          <Text style={styles.tabText}>Login</Text>
+          <Text
+            style={[
+              AuthStyle.tabText,
+              activePageIndex === 1 && AuthStyle.activeTabText,
+            ]}
+          >
+            Login
+          </Text>
+          {activePageIndex === 1 && <View style={AuthStyle.underline} />}
         </TouchableOpacity>
       </View>
       <Swiper
@@ -39,64 +76,175 @@ const AuthScreen = () => {
         index={activePageIndex}
         onIndexChanged={(index) => setActivePageIndex(index)}
       >
-        {/* Page 1: Create Account */}
-        <SafeAreaView style={styles.pageContainer}>
-          <View style={styles.pageContent}>
-            <Text style={styles.pageText}>
-              Add your create account form here
-            </Text>
+        <KeyboardAvoidingView
+          style={AuthStyle.pageContainer}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <View style={AuthStyle.pageContent}>
+            <Text style={AuthStyle.inputLabel}>Full Name</Text>
+            <View style={AuthStyle.inputContainer}>
+              <TextInput
+                style={AuthStyle.inputField}
+                placeholder="Enter your full name"
+                placeholderTextColor="#9CA3AF"
+                value={createAccountData.fullName}
+                autoCapitalize="none"
+                onChangeText={(text) =>
+                  setCreateAccountData({
+                    ...createAccountData,
+                    fullName: text,
+                  })
+                }
+              />
+            </View>
+            <Text style={AuthStyle.inputLabelSecond}>Email address</Text>
+            <View style={AuthStyle.inputContainer}>
+              <TextInput
+                style={AuthStyle.inputField}
+                placeholderTextColor="#9CA3AF"
+                placeholder="Eg namaemail@emailkamu.com"
+                value={createAccountData.email}
+                autoCapitalize="none"
+                onChangeText={(text) =>
+                  setCreateAccountData({
+                    ...createAccountData,
+                    email: text,
+                  })
+                }
+              />
+            </View>
+            <Text style={AuthStyle.inputLabelThird}>Password</Text>
+            <View style={AuthStyle.inputContainer}>
+              <TextInput
+                style={AuthStyle.inputField}
+                placeholderTextColor="#9CA3AF"
+                placeholder="**** **** ****"
+                secureTextEntry
+                value={createAccountData.password}
+                autoCapitalize="none"
+                onChangeText={(text) =>
+                  setCreateAccountData({
+                    ...createAccountData,
+                    password: text,
+                  })
+                }
+              />
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={[
+                AuthStyle.registrationButton,
+                {
+                  backgroundColor: isRegistrationButtonActive
+                    ? "#32B768"
+                    : "#F4F4F4",
+                },
+              ]}
+              disabled={!isRegistrationButtonActive}
+            >
+              <Text
+                style={[
+                  AuthStyle.registrationButtonText,
+                  {
+                    color: isRegistrationButtonActive ? "#FFFFFF" : "#9CA3AF",
+                  },
+                ]}
+              >
+                Registration
+              </Text>
+            </TouchableOpacity>
           </View>
-        </SafeAreaView>
+          <View style={AuthStyle.underlineBottom} />
 
-        {/* Page 2: Login */}
-        <SafeAreaView style={styles.pageContainer}>
-          <View style={styles.pageContent}>
-            <Text style={styles.pageText}>Add your login form here</Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={AuthStyle.googleSignInBtn}
+          >
+            <Ionicons
+              name="logo-google"
+              size={30}
+              style={{ right: "30%", top: "18.5%" }}
+            />
+            <Text style={AuthStyle.googleSignInTxt}>Sign up with Google</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
+
+        <KeyboardAvoidingView
+          style={AuthStyle.pageContainer}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <View style={AuthStyle.pageContent}>
+            <Text style={AuthStyle.inputLabelSecond}>Email address</Text>
+            <View style={AuthStyle.inputContainer}>
+              <TextInput
+                style={AuthStyle.inputField}
+                placeholderTextColor="#9CA3AF"
+                placeholder="Eg namaemail@emailkamu.com"
+                value={loginData.email}
+                autoCapitalize="none"
+                onChangeText={(text) =>
+                  setLoginData({
+                    ...loginData,
+                    email: text,
+                  })
+                }
+              />
+            </View>
+            <Text style={AuthStyle.inputLabelThird}>Password</Text>
+            <View style={AuthStyle.inputContainer}>
+              <TextInput
+                style={AuthStyle.inputField}
+                placeholderTextColor="#9CA3AF"
+                placeholder="**** **** ****"
+                secureTextEntry
+                value={loginData.password}
+                autoCapitalize="none"
+                onChangeText={(text) =>
+                  setLoginData({
+                    ...loginData,
+                    password: text,
+                  })
+                }
+              />
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={[
+                AuthStyle.loginButton,
+                {
+                  backgroundColor: isLoginButtonActive ? "#32B768" : "#F4F4F4",
+                },
+              ]}
+              disabled={!isLoginButtonActive}
+            >
+              <Text
+                style={[
+                  AuthStyle.registrationButtonText,
+                  {
+                    color: isLoginButtonActive ? "#FFFFFF" : "#9CA3AF",
+                  },
+                ]}
+              >
+                Login
+              </Text>
+            </TouchableOpacity>
           </View>
-        </SafeAreaView>
+          <View style={AuthStyle.underlineBottomLogin} />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={AuthStyle.googleSignInBtnLogin}
+          >
+            <Ionicons
+              name="logo-google"
+              size={30}
+              style={{ right: "30%", top: "18.5%" }}
+            />
+            <Text style={AuthStyle.googleSignInTxt}>Login in with Google</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
       </Swiper>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  tabBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "#eee",
-    height: 50,
-  },
-  tabItem: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  activeTabItem: {
-    backgroundColor: "blue",
-  },
-  tabText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "black",
-  },
-  pageContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  pageContent: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  pageText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-});
 
 export default AuthScreen;

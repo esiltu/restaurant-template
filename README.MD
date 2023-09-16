@@ -1,6 +1,6 @@
 # Git instructions
 
-git add . && git commit -m "$(date) + HomeScreen done -> Auth page" && git push
+git add . && git commit -m "$(date)" && git push
 
 # React Navigation instructions
 
