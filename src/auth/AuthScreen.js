@@ -11,11 +11,14 @@ import {
 import Swiper from "react-native-swiper";
 import AuthStyle from "../styles/AuthStyle";
 import { Ionicons } from "@expo/vector-icons";
+import Toast from "react-native-toast-message";
+import { useNavigation } from "@react-navigation/native";
 
 const AuthScreen = () => {
+  const navigation = useNavigation();
   const [activePageIndex, setActivePageIndex] = useState(0);
   const [createAccountData, setCreateAccountData] = useState({
-    fullName: "", 
+    fullName: "",
     email: "",
     password: "",
   });
@@ -31,6 +34,27 @@ const AuthScreen = () => {
 
   const isLoginButtonActive =
     loginData.email !== "" && loginData.password !== "";
+
+  const getDataCreate = () => {
+    try {
+      console.log("Full Name:", createAccountData.fullName);
+      console.log("Email:", createAccountData.email);
+      console.log("Password:", createAccountData.password);
+      Toast.show({
+        type: "success",
+        text1: "Successfully registered account",
+        text2: `Welcome here ${createAccountData.fullName}`,
+      });
+      navigation.navigate("AuthProvider");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getDataLogin = () => {
+    console.log("Email:", loginData.email);
+    console.log("Password:", loginData.password);
+  };
 
   return (
     <SafeAreaView style={AuthStyle.container}>
@@ -141,6 +165,7 @@ const AuthScreen = () => {
                 },
               ]}
               disabled={!isRegistrationButtonActive}
+              onPress={getDataCreate}
             >
               <Text
                 style={[
@@ -216,6 +241,7 @@ const AuthScreen = () => {
                 },
               ]}
               disabled={!isLoginButtonActive}
+              onPress={getDataLogin}
             >
               <Text
                 style={[
