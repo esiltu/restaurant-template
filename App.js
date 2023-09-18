@@ -6,6 +6,7 @@ import {
   HomeScreen,
   AuthScreen,
   AuthProvider,
+  ForgotPassword,
 } from "./src/routers/router";
 import Toast from "react-native-toast-message";
 
@@ -23,6 +24,11 @@ export default function App() {
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
+          options={{ headerShown: false, gestureEnabled: true }}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
           options={{ headerShown: false, gestureEnabled: true }}
         />
         <Stack.Screen

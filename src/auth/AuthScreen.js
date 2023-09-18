@@ -13,6 +13,7 @@ import AuthStyle from "../styles/AuthStyle";
 import { Ionicons } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
+import { StackActions } from "@react-navigation/native";
 
 const AuthScreen = () => {
   const navigation = useNavigation();
@@ -40,6 +41,8 @@ const AuthScreen = () => {
       console.log("Full Name:", createAccountData.fullName);
       console.log("Email:", createAccountData.email);
       console.log("Password:", createAccountData.password);
+
+      navigation.dispatch(StackActions.popToTop());
       Toast.show({
         type: "success",
         text1: "Successfully registered account",
@@ -50,6 +53,11 @@ const AuthScreen = () => {
       console.log(error);
     }
   };
+
+  function goToForgotPassPage() {
+    navigation.dispatch(StackActions.popToTop());
+    navigation.navigate("ForgotPassword");
+  }
 
   const getDataLogin = () => {
     console.log("Email:", loginData.email);
@@ -231,6 +239,17 @@ const AuthScreen = () => {
                   })
                 }
               />
+            </View>
+            <View style={{ alignSelf: "flex-end" }}>
+              <TouchableOpacity
+                style={AuthStyle.forgotPasswordBtn}
+                activeOpacity={0.7}
+                onPress={goToForgotPassPage}
+              >
+                <Text style={AuthStyle.forgotPasswordTxt}>
+                  Forgot Password?
+                </Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
               activeOpacity={0.7}
