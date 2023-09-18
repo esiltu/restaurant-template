@@ -1,5 +1,7 @@
 A brief project description.
 
+* Reminder only frontend what you see not backend !
+
 ## Functionalities
 
 - **Onboarding Flow with Swiper Animation:** Users can navigate through onboarding steps using the Swiper library.
