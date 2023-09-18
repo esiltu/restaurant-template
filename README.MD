@@ -1,7 +1,11 @@
-# Git instructions
+A brief project description.
 
-git add . && git commit -m "$(date)" && git push
+## Functionalities
 
-# React Navigation instructions
+- **Onboarding Flow with Swiper Animation:** Users can navigate through onboarding steps using the Swiper library.
 
-yarn add @react-navigation/native && npx expo install react-native-screens react-native-safe-area-context && yarn add @react-navigation/native-stack && yarn add @react-navigation/bottom-tabs && yarn add @react-navigation/drawer && npx expo install react-native-gesture-handler react-native-reanimated
+- **Login/Register:** Users can register or log in with their account credentials.
+
+## Upcoming Functionalities
+
+- **Bottom Tab Navigator:** A bottom tab navigator with multiple pages for additional functionality is planned.
