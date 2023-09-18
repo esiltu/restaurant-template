@@ -6,6 +6,9 @@ A brief project description.
 
 - **Login/Register:** Users can register or log in with their account credentials.
 
+## Screenshot
+![Screenshot](/src/assets/images/readmescreenshot.png)
+
 ## Upcoming Functionalities
 
 - **Bottom Tab Navigator:** A bottom tab navigator with multiple pages for additional functionality is planned.
