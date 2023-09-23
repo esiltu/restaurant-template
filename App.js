@@ -5,7 +5,7 @@ import {
   OnboardingFlow,
   HomeScreen,
   AuthScreen,
-  AuthProvider,
+  AuthNavigation,
   ForgotPassword,
 } from "./src/routers/router";
 import Toast from "react-native-toast-message";
@@ -41,8 +41,8 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="AuthProvider"
-          component={AuthProvider}
+          name="AuthNavigation"
+          component={AuthNavigation}
           options={{ headerShown: false, gestureEnabled: true }}
         />
       </Stack.Navigator>

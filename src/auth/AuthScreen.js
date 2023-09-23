@@ -48,7 +48,7 @@ const AuthScreen = () => {
         text1: "Successfully registered account",
         text2: `Welcome here ${createAccountData.fullName}`,
       });
-      navigation.navigate("AuthProvider");
+      navigation.navigate("AuthNavigation");
     } catch (error) {
       console.log(error);
     }
@@ -60,8 +60,20 @@ const AuthScreen = () => {
   }
 
   const getDataLogin = () => {
-    console.log("Email:", loginData.email);
-    console.log("Password:", loginData.password);
+    try {
+      console.log("Email:", loginData.email);
+      console.log("Password:", loginData.password);
+
+      navigation.dispatch(StackActions.popToTop());
+      Toast.show({
+        type: "success",
+        text1: "Successfully logged in as",
+        text2: `Welcome here ${loginData.email}`,
+      });
+      navigation.navigate("AuthNavigation");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

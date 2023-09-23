@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const AuthProvider = () => {
+const Home = () => {
   return (
     <View>
-      <Text>AuthProvider</Text>
+      <Text>Home</Text>
     </View>
   )
 }
 
-export default AuthProvider
+export default Home
 
 const styles = StyleSheet.create({})

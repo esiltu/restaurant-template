@@ -1,5 +1,9 @@
 export { default as OnboardingFlow } from "../pages/OnboardingFlow";
 export { default as HomeScreen } from "../pages/HomeScreen";
 export { default as AuthScreen } from "../auth/AuthScreen";
-export { default as AuthProvider } from "../routers/AuthProvider";
+export { default as AuthProvider } from "../auth/AuthScreen";
 export { default as ForgotPassword } from "../services/ForgotPassword";
+export { default as BookingHistoryAuthPage } from "../auth/BottomTabPages/BookingHistory";
+export { default as HomeAuthPage } from "../auth/BottomTabPages/Home";
+export { default as ProfileAuthPage } from "../auth/BottomTabPages/Profile";
+export { default as AuthNavigation } from "../auth/AuthNavigation";
