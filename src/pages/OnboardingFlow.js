@@ -24,6 +24,7 @@ const Dots = ({ selected }) => {
         marginHorizontal: 5,
         backgroundColor,
         borderRadius: 20,
+        // bottom: "1000%",
       }}
     />
   );
