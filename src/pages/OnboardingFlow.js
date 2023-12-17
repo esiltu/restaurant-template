@@ -19,11 +19,11 @@ const Dots = ({ selected }) => {
   return (
     <View
       style={{
-        width: 10,
+        width: 15,
         height: 10,
         marginHorizontal: 5,
         backgroundColor,
-        borderRadius: 20,
+        borderRadius: 100,
         // bottom: "1000%",
       }}
     />
